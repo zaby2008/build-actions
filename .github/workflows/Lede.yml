@@ -14,20 +14,18 @@ on:
   workflow_dispatch:
     inputs:
       REPO_BRANCH:
-        description: '（大雕源码）请选择源码分支'
+        description: '大雕源码'
         required: true
         default: 'master'
         type: choice
         options:
           - 'master'
-          - 'gl-ax1800'
       CONFIG_FILE:
         description: '请选择配置文件'
         required: true
-        default: 'rockchip'
+        default: 'x86_64'
         type: choice
         options:
-          - 'rockchip'
           - 'aarch64'
           - 'asus_rt-acrh17'
           - 'd-team_newifi-d2'
@@ -42,7 +40,7 @@ on:
       CPU_SELECTION:
         description: 'CPU优选,增加编译速度'
         required: true
-        default: '8370C'
+        default: '默认'
         type: choice
         options:
           - '默认'
@@ -132,7 +130,7 @@ jobs:
         fi
     
     - name: 准备结束
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: 检测文件和对比上游版本
       run: |
